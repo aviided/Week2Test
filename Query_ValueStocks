@@ -1,0 +1,20 @@
+SELECT
+	userid,
+	company,
+	divident_start,
+	
+	
+	LAG (divident_start, 1) OVER (
+		PARTITION BY company
+		ORDER BY
+			userid
+	) AS prev_date,
+	divident_start - LAG (divident_start, 1) OVER (
+		PARTITION BY company
+		ORDER BY
+			userid
+	) AS cur_prev_diff
+FROM
+	divident_table
+
+

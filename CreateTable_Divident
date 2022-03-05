@@ -1,0 +1,5 @@
+create table divident_table(
+						 userid serial primary key not null,
+						 company varchar(50) not null,
+						 fiscal_year integer not null
+);
